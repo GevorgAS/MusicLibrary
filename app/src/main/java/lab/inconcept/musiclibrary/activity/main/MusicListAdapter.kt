@@ -1,4 +1,4 @@
-package lab.inconcept.musiclibrary.adapter
+package lab.inconcept.musiclibrary.activity.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +13,8 @@ import lab.inconcept.musiclibrary.helper.Utils
 import lab.inconcept.musiclibrary.model.MusicModel
 import java.util.*
 
-class MusicListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class MusicListAdapter(val callback: (model: MusicModel) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), BindableAdapter<MusicModel> {
     private val mMusicList: MutableList<MusicModel> = ArrayList()
-    private var mItemCallback: SongListItemCallback? = null
-    fun setCallback(callback: SongListItemCallback?) {
-        mItemCallback = callback
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -31,7 +27,7 @@ class MusicListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         itemHolder.mMusicNameView.text = model.name
         itemHolder.mMusicAuthorView.text = model.author
         itemHolder.mMusicAlbumVIew.text = model.album
-        itemHolder.mLayoutItem.setOnClickListener { mItemCallback!!.onListItemClicked(model) }
+        itemHolder.mLayoutItem.setOnClickListener { callback(model) }
         if (model.imageUrl == null || model.imageUrl == " ") {
             itemHolder.mMusicImageView.setImageResource(R.drawable.ic_library_music)
             return
@@ -42,19 +38,33 @@ class MusicListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
+    override fun setData(data: List<MusicModel>?) {
+        data?.let {
+            mMusicList.clear()
+            mMusicList.addAll(data)
+            notifyDataSetChanged()
+        }
+    }
+
+    override fun updateData(model: MusicModel?) {
+        model?.let {
+            if(mMusicList.contains(model))
+                return@let
+            mMusicList.add(model)
+            notifyDataSetChanged()
+        }
+    }
+
     override fun getItemCount(): Int {
         return mMusicList.size
     }
 
-    fun addItem(model: MusicModel) {
-        mMusicList.add(model)
-        notifyDataSetChanged()
-    }
-
-    fun changeItem(changedModel: MusicModel) {
-        val lastPosition = mMusicList.size - 1
-        mMusicList[lastPosition] = changedModel
-        notifyDataSetChanged()
+    override fun changeItem(changedModel: MusicModel?) {
+        changedModel?.let {
+            val index = mMusicList.indexOf(changedModel)
+            mMusicList[index] = changedModel
+            notifyDataSetChanged()
+        }
     }
 
     private class MusicItemViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
