@@ -1,0 +1,27 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ListPrimaryTextItem" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="ListSecondaryTextItem" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/colorTextSecondary</item>
+    </style>
+
+    <style name="DetailPrimaryText" parent="Base.TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DetailSecondaryText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/colorTextSecondary</item>
+    </style>
+</resources>

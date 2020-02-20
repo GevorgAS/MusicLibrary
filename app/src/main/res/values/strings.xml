@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Music Library</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_email">Email</string>
+    <string name="sign_in">Sign in</string>
+    <string name="registration_label">Registration</string>
+    <string name="add_music_label">Add Music</string>
+    <string name="song_name">Song Name</string>
+    <string name="song_artist">Song Artist</string>
+    <string name="song_album">Song Album</string>
+    <string name="add_song">Add Song</string>
+    <string name="exit_to_app">Exit</string>
+    <string name="main_content_label">Music Library</string>
+    <string name="attach_picture">Add Picture</string>
+    <string name="alert_exit">Exit</string>
+    <string name="alert_message">Do you want to sign out?</string>
+    <string name="alert_ok">OK</string>
+    <string name="alert_cancel">Cancel</string>
+    <string name="invalid_email">Please type a valid email!</string>
+    <string name="error_email_and_password">Please type email and password!</string>
+    <string name="error_authentication">Authentication failed!</string>
+    <string name="smt_went_wrong">Something went wrong!</string>
+    <string name="error_song_name">Please specify song name!</string>
+    <string name="error_upload_image">Unable to upload Image!</string>
+    <string name="image_added">Image Successfully added!</string>
+    <string name="error_load_image">Unable to load the image, please select another one!</string>
+    <string name="songs_path">songs</string>
+    <string name="permission_not_granted">Permission Not Granted!</string>
+    <string name="image_url">imageUrl</string>
+</resources>
